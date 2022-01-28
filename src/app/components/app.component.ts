@@ -19,8 +19,4 @@ export class AppComponent {
       this.currentWeather = new CurrentWeather().deserialize(data)
     })
   }
-
-  searchQueryInput(value: string) {
-    this.searchQuery = value
-  }
 }

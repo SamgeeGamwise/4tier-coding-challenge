@@ -10,13 +10,18 @@ import { WeatherService } from '../services/weather.service'
 })
 export class AppComponent {
   searchQuery: string = ""
+  errMsg: string = ""
   currentWeather: CurrentWeather = new CurrentWeather
 
   constructor(private weatherService: WeatherService) { }
 
   getCurrentWeather(searchQuery: string): void {
-    this.weatherService.getCurrentWeather(searchQuery).subscribe((data: any) => {
+    this.weatherService.getCurrentWeather(searchQuery).subscribe((data) => {
       this.currentWeather = new CurrentWeather().deserialize(data)
+      this.searchQuery = ""
+      this.errMsg = ""
+    }, () => {
+      this.errMsg = "Results could not be found!"
     })
   }
 }

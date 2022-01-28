@@ -1,15 +1,14 @@
 <div class="container">
   <div class="row mt-5">
-    <div class="col"></div>
-    <div class="col-4">
+    <div class="col-8 offset-md-3 col-md-4">
       <input
         class="form-control"
         type="text"
-        placeholder="[CITY], [STATE CODE], [COUNTRY CODE]"
+        placeholder="[City], [State Code], [Country Code]"
         [(ngModel)]="searchQuery"
       />
     </div>
-    <div class="col-3">
+    <div class="col-4 col-md-2">
       <button
         type="button"
         class="btn btn-primary"
@@ -18,17 +17,17 @@
         Get Current Weather!
       </button>
     </div>
-    <div class="col"></div>
   </div>
 
   <div class="row mt-5">
-    <div class="col-12 d-flex justify-content-center">
-      <div *ngIf="currentWeather.name !== ''">
-        <h1>Location: {{ currentWeather.location() }}</h1>
-        <h2>Temperature: {{ currentWeather.temp() }}°F</h2>
-        <h2>Humidity: {{ currentWeather.humidity() }}%</h2>
-        <h2>Wind speed: {{ currentWeather.speed() }} mph</h2>
+    <div class="col-12 offset-md-3 col-md-6">
+      <div *ngIf="currentWeather.name !== '' && errMsg === ''">
+        <h1><b>Location:</b> {{ currentWeather.location() }}</h1>
+        <h1><b>Temperature:</b> {{ currentWeather.temp() }}°F</h1>
+        <h1><b>Humidity:</b> {{ currentWeather.humidity() }}%</h1>
+        <h1><b>Wind speed:</b> {{ currentWeather.speed() }} mph</h1>
       </div>
+      <div *ngIf="errMsg !== ''">{{ errMsg }}</div>
     </div>
   </div>
 </div>
